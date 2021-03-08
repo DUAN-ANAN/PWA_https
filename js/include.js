@@ -16,7 +16,8 @@ var dbModifiedTime = "1560755549000";
 function db_check() { // (path , callback)
     ///<summary>創建DB</summary>
     if (!db) {
-        db = window.SpatialitePlugin.openDatabase("./db/db.sqlite"); // 把 path丟回 pwa 那隻 的  SpatialiteFactory
+        // db = window.SpatialitePlugin.openDatabase("/db/db.sqlite"); // 把 path丟回 pwa 那隻 的  SpatialiteFactory
+        db = window.SpatialitePlugin.openDatabase("https://tm.gis.tw/ChiayiWater_Nicholas/db/db.sqlite"); // 把 path丟回 pwa 那隻 的  SpatialiteFactory
         if (db)
             console.log("connection sqlite successfully!");
         else

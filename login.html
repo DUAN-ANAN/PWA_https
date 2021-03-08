@@ -1,15 +1,15 @@
 ﻿<!DOCTYPE html>
-<html >
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="initial-scale=1, width=device-width, height=device-height, viewport-fit=cover">
-  <title>主管行動祕書</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="css/loading.css" >
-  <link rel="stylesheet" type="text/css" href="css/login.css">
-   
-  <!-- pwa -->
-  <link rel="manifest" href="manifest.json">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width, height=device-height, viewport-fit=cover">
+    <title>主管行動祕書</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/loading.css">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
 </head>
 
 <body>
@@ -19,13 +19,13 @@
             <form class="form">
                 <input type="text" id="uid" placeholder="請輸入帳號" value="">
                 <input type="password" id="upwd" placeholder="請輸入密碼" value="">
-                <input type="button" id="login-button" value="登入"/>
+                <input type="button" id="login-button" value="登入" />
                 <div class="checkbox" style="margin-top:20px; color:#000;">
                     <label><input id="remember" type="checkbox" style="width:20px; display:inline-block;">記住我</label>
                 </div>
             </form>
         </div>
-	
+
         <ul class="bg-bubbles">
             <li></li>
             <li></li>
@@ -39,7 +39,7 @@
             <li></li>
         </ul>
     </div>
-    
+
     <div id="custom-overlay">
         <div class="loading-spinner">
         </div>
@@ -47,12 +47,8 @@
 </body>
 
 <script src="js/jquery-2.1.1.js"></script>
-<!-- <script src="/js/node_modules/sql.js/dist/sql-wasm.js"></script> -->
-<!-- <script src="js/sql.js"></script>
-<scrip src="js/sql-wasm.js"></scrip> -->
- <!-- 使用新版的sql.js -->
- <script src="js/sql-wasm.wasm"></script>
- <script src="js/sql-wasm.js"></script>
+<!-- 使用新版的sql.js -->
+<script src="./js/sql-wasm.js"></script>
 <script src="js/sqlite/pwaSqlitePlugin.js"></script>
 <script src="js/include.js"></script>
 <script src="js/utils.js"></script>
@@ -60,19 +56,36 @@
 <script src="js/update.js"></script>
 <script src="js/loading.js"></script>
 <script src="js/md5.js"></script>
-<script> 
+<script>
     //註冊serviceworker
     if ('serviceWorker' in navigator) {
-                window.addEventListener('load', function () {
-                    navigator.serviceWorker.register('service-worker.js').then(function (registration) {
-                        // Registration was successful
-                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                    }, function (err) {
-                        // registration failed :(
-                        console.log('ServiceWorker registration failed: ', err);
-                    });
-                });
-            }
-    </script>
-</html>
+        window.addEventListener('load', function () {
+            navigator.serviceWorker.register('service-worker.js').then(function (registration) {
+                // Registration was successful
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }, function (err) {
+                // registration failed :(
+                console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+    }
 
+    // 進入該頁面後詢問是否加入至主畫面
+    console.log('add listener');
+    window.addEventListener('beforeinstallprompt', function(e) {
+      // beforeinstallprompt Event fired
+      // e.userChoice will return a Promise.
+      e.userChoice.then(function(choiceResult) {
+        console.log(choiceResult.outcome);
+        if(choiceResult.outcome == 'dismissed') {
+          console.log('User cancelled home screen install');
+        }
+        else {
+          console.log('User added to home screen');
+        }
+      });
+    });
+
+</script>
+
+</html>

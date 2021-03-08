@@ -2,7 +2,7 @@
     "name": "嘉義行動祕書",
     "short_name": "行動祕書",      
     "display": "standalone",
-    "start_url": "/login.html",
+    "start_url": "./login.html",
     "background_color": "#FAFAFA",
     "theme_color": "#00A7E5",
     "orientation": "portrait-primary",

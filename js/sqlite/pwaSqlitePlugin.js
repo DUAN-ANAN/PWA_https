@@ -7,7 +7,8 @@ var debugMsg = false; // enable debug msg or not
         console.log("SpatialitePlugin");
 
         config = {
-            locateFile: filename => `js/sqlite/node_modules/sql.js/dist/${filename}`
+            // locateFile: filename => `js/${filename}`
+            locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.4.0/dist/${filename}`
         }
 
         initSqlJs(config).then(function (SQL) {
@@ -24,10 +25,9 @@ var debugMsg = false; // enable debug msg or not
                 //
                 // getData(); // 從service取得資料
                 app.onDeviceReady();
-
             };
             xhr.send();
-
+            
         });
 
     };

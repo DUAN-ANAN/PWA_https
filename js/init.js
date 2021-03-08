@@ -12,7 +12,7 @@ var app = {
 
     },
     loadDB: function () {
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, onFileSystemFail);
+        // window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, onFileSystemFail);
     },
     bindHTMLEvents: function () {
         if (window.localStorage["NAME"] != "") {
